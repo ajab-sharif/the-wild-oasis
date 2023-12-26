@@ -58,7 +58,7 @@ function CabinRow({ cabin }) {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: deleteCabin,
     onSuccess: () => {
-      toast.success("cabin success");
+      toast.success("Cabin delete success");
       queryClient.invalidateQueries({
         queryKey: ["cabins"],
       });

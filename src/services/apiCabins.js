@@ -14,10 +14,9 @@ export const getCabins = async function () {
 export const createCabin = async function (newCabin) {
   const { data, error } = await supabase
     .from('cabins')
-    .insert([
-      { some_column: 'someValue', other_column: 'otherValue' },
-    ])
+    .insert([newCabin])
     .select()
+  if (error) throw new Error(error.message);
   return data;
 }
 
