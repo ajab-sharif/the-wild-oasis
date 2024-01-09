@@ -4,6 +4,8 @@ import CabinTable from "../features/cabins/CabinTable";
 import Button from "../ui/Button";
 import { useState } from "react";
 import CreateCabinForm from "../features/cabins/CreateCabinForm";
+import Modal from "./../ui/Modal";
+
 // import { getCabins } from "./../services/apiCabins";
 
 function Cabins() {
@@ -20,7 +22,11 @@ function Cabins() {
         <Button onClick={() => setShowForm((show) => !show)}>
           {!showForm ? "add new" : "Close"}
         </Button>
-        {showForm && <CreateCabinForm />}
+        {showForm && (
+          <Modal onClose={() => setShowForm(false)}>
+            <CreateCabinForm onCloseModal={() => setShowForm(false)} />
+          </Modal>
+        )}
       </Row>
     </>
   );
