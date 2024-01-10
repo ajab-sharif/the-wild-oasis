@@ -6,13 +6,11 @@ export const getCabins = async function () {
     .from('cabins')
     .select('*')
   if (error) {
-    console.error(error.message)
     throw new Error('Cabins could not be loaded')
   }
   return data;
 };
 export const createEditCabin = async function (newCabin, id) {
-  console.log(newCabin, id, 'api, newcabin,id')
   const hasImagePath = newCabin?.image?.startsWith?.(supabaseUrl);
 
   const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll('/', '');
@@ -52,7 +50,6 @@ export const deleteCabin = async function (id) {
     .delete()
     .eq('id', id)
   if (error) {
-    console.error(error);
     throw new Error("Cabin could not be deletd");
   }
   return data;
